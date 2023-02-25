@@ -34,7 +34,10 @@ namespace Exercise_4
         }
             public void Find(string name)
         {
-            if( articles)
+            if (true)
+            {
+
+            }
         }
         
     }
