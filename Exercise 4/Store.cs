@@ -8,7 +8,12 @@ namespace Exercise_4
 {
     internal class Store
     {
-        Article[] articles = new Article[10] ;
+        Article[] articles ;
+
+        public Store(params Article[] Article)
+        {
+            articles = Article;
+        }
 
         public Article this[int index]
         {
@@ -19,10 +24,10 @@ namespace Exercise_4
                     return articles[index];
                 else
                 {
-                    return null;
+                    
+                     throw new ArgumentOutOfRangeException(); 
                 }
-                //  return "Попытка обращения за пределы массива.";
-                //return articles[index];
+             
             }
             set    // Мутатор.
             {
@@ -32,13 +37,32 @@ namespace Exercise_4
                     Console.WriteLine("Попытка записи за пределами массива.");
             }
         }
-            public void Find(string name)
+        public Article this[string name]
         {
-            if (true)
+            get
             {
-
+                foreach (var article in articles)
+                {
+                    if(article.NameItem == name)
+                    {
+                        return article;
+                    }
+                }
+                //throw new Exception("Unknown name");
+                return new Article("Net tovara","",0);
             }
         }
+        //public void Show()
+        //{
+        //    foreach (var item in articles)
+        //    {
+        //        Console.WriteLine(item.NameItem);
+        //        Console.WriteLine(item.NameStore);
+        //        Console.WriteLine(item.Price);
+        //    }
+        //}
+        
+       
         
     }
 }
